@@ -14,7 +14,7 @@ const Config = struct {
 
 pub fn read_config(allocator: Allocator) !Config {
     var fd = try std.fs.openFileAbsolute(config_file, .{});
-    defer _ = fd.close();
+    defer fd.close();
     const content = try fd.readToEndAlloc(allocator, 1024);
     const parsed = try std.json.parseFromSlice(Config, allocator, content, .{});
     return parsed.value;
