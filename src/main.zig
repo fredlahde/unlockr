@@ -7,7 +7,8 @@ pub fn main() !void {
     var fba = std.heap.FixedBufferAllocator.init(&buffer);
     const allocator = fba.allocator();
 
-    var iter = std.process.args();
+    var iter = try std.process.argsWithAllocator(allocator);
+    defer iter.deinit();
     _ = iter.next();
     const cmd: []const u8 = iter.next() orelse @panic("you need to pass a cmd: lock or unlock");
 
