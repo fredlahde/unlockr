@@ -1,6 +1,10 @@
 # unlockr
 
-A small CLI to interface with LUKS containers more easily,
+A small CLI to interface with LUKS containers more easily.
+
+## Requirements
+
+- Zig 0.15.2 or later
 
 ## Usage
 
