@@ -13,12 +13,7 @@ jobs:
     name: Build and Test
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: mlugg/setup-zig@v2
         with:
-          repository: ziglang/zig-bootstrap
-          ref: 'master'
-          path: 'zig-bootstrap'
-      - run: |
-          cd "$GITHUB_WORKSPACE/zig-bootstrap"
-          ./build x86_64-linux-gnu baseline
+          version: 0.15.2
       - run: zig build test
